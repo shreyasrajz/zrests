@@ -1,34 +1,44 @@
 package com.example.zrests.service;
 
 import com.example.zrests.model.Restaurant;
-import com.example.zrests.repository.RestaurantRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.zrests.repository.RestaurantRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RestaurantService {
 
-    private RestaurantRepository restaurantRepository;
+    private RestaurantRepo restaurantRepo;
 
-    public RestaurantService(RestaurantRepository restaurantRepository) {
-        this.restaurantRepository = restaurantRepository;
+    public RestaurantService(RestaurantRepo restaurantRepo) {
+        this.restaurantRepo = restaurantRepo;
     }
 
-    public void saveRestaurant(Restaurant restaurant) {
-        restaurantRepository.save(restaurant);
+    public boolean deleteByID(Long id) {
+        try {
+            restaurantRepo.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            return false;
+        }
     }
 
-    public List<Restaurant> listAllRestaurants() {
-        return restaurantRepository.findAll();
+    public Optional<Restaurant> listByID(Long id) {
+        try {
+            return restaurantRepo.findById(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public Restaurant listByID(Long id) {
-        return restaurantRepository.findById(id).get();
+    public List<Restaurant> listAll() {
+        return restaurantRepo.findAll();
     }
 
-    public void deleteByID(Long id) {
-        restaurantRepository.deleteById(id);
+    public Restaurant save(Restaurant restaurant) {
+        return restaurantRepo.save(restaurant);
     }
 }
