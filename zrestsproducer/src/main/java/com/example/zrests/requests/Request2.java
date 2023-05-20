@@ -5,7 +5,7 @@ import com.example.zrests.model.Restaurant;
 public class Request2 {
     private String type;
     private Restaurant restaurant;
-    private int id;
+    private Long id;
 
     public String getType() {
         return type;
@@ -23,11 +23,11 @@ public class Request2 {
         this.restaurant = restaurant;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

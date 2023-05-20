@@ -3,7 +3,7 @@ package com.example.zrests;
 public class Request1 {
     private String type;
     private Restaurant restaurant;
-    private int id;
+    private Long id;
 
     @Override
     public String toString() {
@@ -30,11 +30,11 @@ public class Request1 {
         this.restaurant = restaurant;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

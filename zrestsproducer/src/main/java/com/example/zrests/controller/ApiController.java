@@ -14,7 +14,7 @@ public class ApiController {
         this.producer = producer;
     }
     @PostMapping("/add")
-    public String add(@RequestBody Restaurant restaurant) {
+    public String add(@RequestBody Restaurant restaurant,@RequestHeader(value = "sync") Boolean sync) {
         Request2 request = new Request2();
         request.setType("Add");
         request.setRestaurant(restaurant);
@@ -22,15 +22,19 @@ public class ApiController {
         return "ok";
     }
     @GetMapping("/listall")
-    public String listAll() {
+    public String listAll(@RequestHeader(value = "sync") Boolean sync) {
+        if(sync) {
+            System.out.println("A synchronous request is made");
+            return "sync ok";
+        }
         Request2 request = new Request2();
         request.setType("ListAll");
         producer.sendmessage(request);
         System.out.println("Request to list all the Restaurants");
         return "ok";
     }
-    @GetMapping("/list")
-    public String listByID(@RequestParam int id) {
+    @GetMapping("/list/{id}")
+    public String listByID(@PathVariable("id") Long id,@RequestHeader(value = "sync") Boolean sync) {
         Request2 request = new Request2();
         request.setType("ListByID");
         request.setId(id);
@@ -38,8 +42,8 @@ public class ApiController {
         System.out.println(String.format("Request to list Restaurant with id: %s",id));
         return "ok";
     }
-    @DeleteMapping("/delete")
-    public String deleteByID(@RequestParam int id) {
+    @DeleteMapping("/delete/{id}")
+    public String deleteByID(@PathVariable("id") Long id,@RequestHeader(value = "sync") Boolean sync) {
         Request2 request = new Request2();
         request.setType("DeleteByID");
         request.setId(id);
@@ -48,7 +52,8 @@ public class ApiController {
         return "ok";
     }
     @GetMapping("/hello")
-    public String hello() {
+    public String hello(@RequestHeader(value="User-Agent") String userAgent) {
+        System.out.println(userAgent);
         return "hello";
     }
 }
