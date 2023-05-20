@@ -1,10 +1,28 @@
 package com.example.zrests;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "restaurants")
 public class Restaurant {
     private String name;
     private String email;
     private String phone;
     private String city;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    public Restaurant(String name, String email, String phone, String city) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.city = city;
+    }
+
+    public Restaurant() {
+
+    }
 
     @Override
     public String toString() {
@@ -13,6 +31,7 @@ public class Restaurant {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", city='" + city + '\'' +
+                ", id=" + id +
                 '}';
     }
 
@@ -46,5 +65,13 @@ public class Restaurant {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
