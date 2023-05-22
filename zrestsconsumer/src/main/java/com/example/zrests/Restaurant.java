@@ -1,5 +1,7 @@
 package com.example.zrests;
 
+import com.google.gson.Gson;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,6 +24,11 @@ public class Restaurant {
 
     public Restaurant() {
 
+    }
+    public String toJson() {
+        Gson gson = new Gson();
+        Restaurant restaurant = new Restaurant(name,email,phone,city);
+        return gson.toJson(restaurant);
     }
 
     @Override
