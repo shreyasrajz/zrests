@@ -1,4 +1,6 @@
-package com.example.zrests;
+package com.example.zrests.request;
+
+import com.example.zrests.model.Restaurant;
 
 public class Request1 {
     private String type;

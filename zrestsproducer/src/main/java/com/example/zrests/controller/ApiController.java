@@ -4,6 +4,7 @@ import com.example.zrests.kafka.Producer;
 import com.example.zrests.model.Restaurant;
 import com.example.zrests.requests.Request2;
 import com.example.zrests.service.RestaurantService;
+import com.sun.istack.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;

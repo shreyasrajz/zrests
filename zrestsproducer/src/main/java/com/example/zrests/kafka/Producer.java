@@ -1,6 +1,5 @@
 package com.example.zrests.kafka;
 
-import com.example.zrests.model.Restaurant;
 import com.example.zrests.requests.Request2;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -31,18 +30,11 @@ public class Producer {
         ObjectMapper Obj = new ObjectMapper();
 
         try {
-            // Getting organisation object as a json string
             String jsonStr = Obj.writeValueAsString(data);
-
-            // Displaying JSON String on console
             System.out.println(jsonStr);
             kafkaTemplate.send("zrests",jsonStr);
         } catch (IOException e) {
-
-            // Display exception along with line number
-            // using printStackTrace() method
             e.printStackTrace();
         }
-
     }
 }

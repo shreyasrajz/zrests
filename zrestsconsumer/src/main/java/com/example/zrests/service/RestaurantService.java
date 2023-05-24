@@ -1,6 +1,6 @@
 package com.example.zrests.service;
 
-import com.example.zrests.Restaurant;
+import com.example.zrests.model.Restaurant;
 import com.example.zrests.repository.RestaurantRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -67,7 +67,6 @@ public class RestaurantService {
     }
 
     public Restaurant updateByID(Long id, Restaurant newRestaurant) {
-        Restaurant restaurant;
         String key = "restaurant:"+id.toString();
         boolean idPresentInRedis = jedis.exists(key);
         if(idPresentInRedis) {

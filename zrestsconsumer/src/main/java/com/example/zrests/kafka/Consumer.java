@@ -1,7 +1,7 @@
 package com.example.zrests.kafka;
 
-import com.example.zrests.Request1;
-import com.example.zrests.Restaurant;
+import com.example.zrests.request.Request1;
+import com.example.zrests.model.Restaurant;
 import com.example.zrests.service.RestaurantService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

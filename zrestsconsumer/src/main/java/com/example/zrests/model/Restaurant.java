@@ -1,4 +1,4 @@
-package com.example.zrests;
+package com.example.zrests.model;
 
 import com.google.gson.Gson;
 
