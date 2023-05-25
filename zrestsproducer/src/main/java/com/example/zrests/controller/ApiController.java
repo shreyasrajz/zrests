@@ -68,7 +68,7 @@ public class ApiController {
             }
             return String.format(
                     "Synchronous Request \n"+
-                    "Restaurant with id: {} \n",id) +
+                    "Restaurant with id: %s \n",id) +
                     restaurant.toString();
         }
         Request2 request = new Request2();
